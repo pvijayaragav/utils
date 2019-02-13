@@ -1,0 +1,46 @@
+provider_config:
+  bms:
+    ssh_pwd: c0ntrail123
+    ssh_user: root
+    domainsuffix: local
+instances:
+  bms1:
+    provider: bms
+    ip: 10.84.13.51
+    roles:
+      config_database:
+      config:
+      control:
+      analytics_database:
+      analytics:
+      webui:
+      vrouter:
+      openstack_control:
+      openstack_network:
+      openstack_storage:
+      openstack_monitoring:
+      openstack_compute:
+kolla_config:
+  customize:
+    nova.conf: |
+      [libvirt]
+      virt_type=kvm
+      cpu_mode=none
+  kolla_globals:
+    network_interface: ens5f0
+    kolla_internal_vip_address: 10.84.13.51
+    contrail_api_interface_address: 10.84.13.51
+    enable_haproxy: no
+  kolla_passwords:
+    keystone_admin_password: c0ntrail123
+contrail_configuration:
+  CONTAINER_REGISTRY: opencontrailnightly
+  CONTRAIL_VERSION: latest
+  CLOUD_ORCHESTRATOR: openstack
+  RABBITMQ_NODE_PORT: 5673
+  AUTH_MODE: keystone
+  KEYSTONE_AUTH_HOST: 10.84.13.51
+  KEYSTONE_AUTH_URL_VERSION: /v3
+  KUBERNETES_CLUSTER_PROJECT: {}
+  PHYSICAL_INTERFACE: ens5f0
+  AUTH_MODE: keystone
