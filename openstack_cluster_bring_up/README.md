@@ -1,5 +1,5 @@
 to bring up ur own openstack + contrail, 
-also you should be running centos 7.5
+running centos 7.5
 
 ### run 
 ```sh
