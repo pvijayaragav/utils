@@ -99,8 +99,8 @@ contrail_configuration:
   AUTH_MODE: keystone
 EOM
 
-#./scp.sh $ansible_host
-#./ansible_plays.sh $ansible_host
+./scp.sh $ansible_host
+./ansible_plays.sh $ansible_host
 
 # Creating vm flavors
 # Will be creating 4 flavors small, medium, large, very_large
