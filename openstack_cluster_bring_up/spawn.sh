@@ -18,11 +18,10 @@ send "yum -y install epel-release;yum -y install python-pip;pip install requests
 expect "]#"
 send "yum -y install git ansible-2.4.2.0\r"
 expect "]#"
-if {$ansible_host == true} {
+if {$ansible_host == "true"} {
   send "git clone http://github.com/Juniper/contrail-ansible-deployer\r"
   expect "]#"
 } else {
 
 }
-
-close -i $spawn_id
+close $spawn_id

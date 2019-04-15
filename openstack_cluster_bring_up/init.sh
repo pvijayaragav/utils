@@ -99,8 +99,14 @@ contrail_configuration:
   AUTH_MODE: keystone
 EOM
 
-./scp.sh $ansible_host
+./scp.sh $ansible_host instances.yaml /contrail-ansible-deployer/config
 ./ansible_plays.sh $ansible_host
 
 # Creating vm flavors
 # Will be creating 4 flavors small, medium, large, very_large
+./create_flavors.sh $ansible_host
+
+# Craeting kubernetes cluster
+./scp.sh $ansible_host "../vm_images/centos-7.5.qcow2" "/"
+./scp.sh $ansible_host "../vm_images/rhel-server-7.5-update-4-x86_64-kvm.qcow2-QA" "/"
+./kubernetes.sh $ansible_host "rhel-server-7.5-update-4-x86_64-kvm.qcow2-QA"

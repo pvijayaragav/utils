@@ -20,6 +20,18 @@ instances:
       openstack_storage:
       openstack_monitoring:
       openstack_compute:
+  bms2:
+    provider: bms
+    ip: 10.84.13.52
+    roles:
+      vrouter:
+      openstack_compute:
+  bms3:
+    provider: bms
+    ip: 10.84.13.59
+    roles:
+      vrouter:
+      openstack_compute:
 kolla_config:
   customize:
     nova.conf: |
